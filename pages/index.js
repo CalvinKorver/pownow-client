@@ -1,23 +1,10 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
-
-const StyledContainer = styled.div`
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import Homepage from './signup/Homepage'
 
 const Home = () => (
-  <StyledContainer>
     <div>
-      <h1>Next.js + Fomantic-UI!</h1>
+      <Homepage/>
     </div>
-    <div>
-      <Button primary>Primary</Button>
-      <Button secondary>Secondary</Button>
-    </div>
-  </StyledContainer>
 );
 export default Home;
