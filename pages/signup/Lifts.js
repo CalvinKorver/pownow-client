@@ -1,8 +1,10 @@
-import Menu from "./Menu";
 import { Container, Button, Checkbox, Form, Divider, Header } from 'semantic-ui-react/';
+import { MyForm, HeaderContainer, PowHeader, BackButton } from '../../style/style';
 import styled from "styled-components";
+import Layout from '../../components/Layout';
+import Link from 'next/link';
 
-export default class liftCheckBoxes extends React.Component {
+export default class Lifts extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,9 +42,19 @@ export default class liftCheckBoxes extends React.Component {
         ));
 
         return (
-            <div>
-                {liftCheckBoxes}
-            </div>
+            <Layout>
+                <MyForm id="signup3">
+                    <Header as='h3'>Which lifts would you like to track?</Header>
+                    {liftCheckBoxes}
+                    <Link href="/signup/confirm">
+                        <Button fluid >Next</Button>
+                    </Link>
+                    <Link href="signup/selectresort">
+                        <BackButton fluid >Go Back</BackButton>
+                    </Link>
+                </MyForm>
+            </Layout>
         )
     }
+
 }

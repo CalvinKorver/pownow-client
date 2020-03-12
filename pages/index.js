@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
-import Homepage from './signup/Homepage'
+import Start from './signup/Start';
+import Layout from '../components/Layout';
 
 const Home = () => (
     <div>
-      <Homepage/>
+      <Layout>
+        <Start/>
+      </Layout>
     </div>
 );
 export default Home;

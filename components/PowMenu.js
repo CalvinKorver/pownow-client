@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 
-export default class MenuExampleSecondaryPointing extends Component {
+export default class PowMenu extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
