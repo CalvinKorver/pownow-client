@@ -7,15 +7,16 @@ import Link from 'next/link';
 export default function Confirm(props) {
 
     return (
-        <MyForm id="signup3" >
-            <Header as='h3'>Which lifts would you like to track?</Header>
-            <Form.Field>
-                <input placeholder='Squaw Valley' />
-            </Form.Field>
-            <Form.Field>
-                <input placeholder='Choose a Date' />
-            </Form.Field>
-            {/* <Button value={JSON.stringify({ parent: 'signup4', next: 'signup1' })} type='next' onClick={this.handleNext}>Next</Button> */}
-        </MyForm>
+        <Layout>
+            <MyForm id="signup3" >
+                <Header as='h3'>You're setup to track:</Header>
+                <p>List Here.</p>
+
+                    <Button type="submit" fluid >Start PowNow</Button>
+                <Link href="/signup/lifts">
+                    <BackButton fluid >Go Back</BackButton>
+                </Link>
+            </MyForm>
+        </Layout>
     )
 }

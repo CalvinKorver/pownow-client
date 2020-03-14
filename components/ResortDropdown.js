@@ -6,7 +6,7 @@ const friendOptions = [
     key: 'squaw',
     text: 'Squaw Valley',
     value: 'squaw',
-    image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
+    image: { src: '/squaw.png' },
   },
 ]
 

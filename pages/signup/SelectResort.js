@@ -10,7 +10,7 @@ export default function SelectResort(props) {
             key: 'squaw',
             text: 'Squaw Valley',
             value: 'squaw',
-            image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
+            image: { src: '/squaw.png' },
         },
     ]
 
@@ -18,7 +18,7 @@ export default function SelectResort(props) {
         <Layout>
             <MyForm id="signup2" >
                 <Header as='h3'>Select your ski resort and when you're visiting</Header>
-                <Form.Field centered>
+                <Form.Field >
                     <Dropdown
                         placeholder='Select Resort'
                         fluid
