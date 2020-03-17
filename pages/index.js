@@ -1,16 +1,19 @@
-import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
-import Start from './signup/Start';
 import Layout from '../components/Layout';
+import FunctionStart from './signup/FunctionStart';
+import { Provider } from "react-redux";
+import { createStore } from 'redux';
+import rootReducer from '../lib/reducers';
 
-// import { Provider } from "react-redux";
-// import store from "./js/store/index";
+const store = createStore(rootReducer)
 
-const Home = () => (
+export const Home = () => {
+  return(
     // <Provider store={store}>
-      <Layout>
-        <Start/>
-      </Layout>
-    // </Provider>
-);
-export default Home;
+    //   <Layout>
+    //     <FunctionStart/>
+    //   </Layout>
+    // </Provider> 
+    <p>hey</p>
+    )
+  }
+
