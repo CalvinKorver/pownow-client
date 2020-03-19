@@ -1,15 +1,15 @@
-import { BackButton, DifficultyIcon, MyForm } from '../../style/style';
+import { BackButton, DifficultyIcon, MyForm } from '../style/style';
 import { Button, Checkbox, Container, Divider, Form, Header } from 'semantic-ui-react/';
 import React, { useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
-import Layout from '../../components/Layout';
-import LiftsContainer from '../../containers/LiftsContainer'
+import Layout from './Layout';
 import Link from 'next/link';
+import { addLifts } from '../lib/actions';
 import styled from "styled-components";
 import { useRouter } from 'next/router'
 
-const Lifts = (props) => {
+const LiftsComponent = (props, {handleSubmit}) => {
 
     const liftNames = [
         { liftName: 'KT22 Express', liftDifficulty: 'black', checked: false},
@@ -39,6 +39,12 @@ const Lifts = (props) => {
         setLifts(newArray)
     }
 
+    const submit = e => {
+        e.preventDefault()
+        dispatch(addLifts(lifts))
+        router.push("/signup/confirm")
+    }
+
     const liftCheckBoxes = liftNames.map((lift) => (
         <Form.Field key={lift.liftName} textAlign='left' >
             <Checkbox onClick={() => handleCheckBox(lift)}
@@ -51,8 +57,19 @@ const Lifts = (props) => {
     ));
 
     return (
-        <LiftsContainer/>
+        <Layout>
+            <MyForm id="signup3" onSubmit={submit}>
+                <Header as='h3'>Which lifts would you like to track?</Header>
+                {liftCheckBoxes}
+                <Form.Button fluid type='submit'>Next</Form.Button>
+                <Link href="/signup/selectresort">
+                    <BackButton fluid >Go Back</BackButton>
+                </Link>
+            </MyForm>
+        </Layout>
     )
 }
 
-export default connect(state => state)(Lifts)
+export default connect(state => state)(LiftsComponent)
+
+
