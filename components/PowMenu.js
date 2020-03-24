@@ -1,5 +1,8 @@
+import { Image, Menu } from 'semantic-ui-react'
 import React, { Component } from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
+import { RightMenu, StyledMenu } from '../style/style'
+
+import Link from 'next/link';
 
 export default class PowMenu extends Component {
   state = { activeItem: 'home' }
@@ -10,32 +13,35 @@ export default class PowMenu extends Component {
     const { activeItem } = this.state
 
     return (
-      <div>
-        <Menu pointing secondary>
+      <StyledMenu secondary>
+        <Menu.Item
+          name='How it Works'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='...'
+          active={activeItem === '...'}
+          onClick={this.handleItemClick}
+        />
+        <Link href="/">
+          <Menu.Item style={{ margin: '0 auto' }}>
+            <Image style={{ width: '100px' }} src="/pow-logo.png" alt="" />
+          </Menu.Item>
+        </Link>
+        <RightMenu >
           <Menu.Item
-            name='home'
-            active={activeItem === 'home'}
+            name='Log In'
+            active={activeItem === 'logout'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='friends'
+            name='Signup'
             active={activeItem === 'friends'}
             onClick={this.handleItemClick}
           />
-          <Menu.Menu position='right'>
-            <Menu.Item
-              name='logout'
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu>
-      </div>
+        </RightMenu>
+      </StyledMenu>
     )
   }
 }

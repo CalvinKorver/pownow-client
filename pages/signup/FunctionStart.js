@@ -26,7 +26,7 @@ const FunctionStart = (props) => {
 
     const submit = e => {
         e.preventDefault()
-        if (!rawPhone.trim()) { return }
+        // if (!rawPhone.trim()) { return }
         dispatch(addPhone(rawPhone))
         router.push('/signup/selectresort')
     }

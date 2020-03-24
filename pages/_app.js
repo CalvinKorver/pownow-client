@@ -1,13 +1,16 @@
-import React from 'react';
-import App, { Container } from 'next/app';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import withRedux from 'next-redux-wrapper'
 import '../.semantic/dist/semantic.min.css';
+
+import App, { Container } from 'next/app';
+import { applyMiddleware, createStore } from 'redux'
+
+import { Provider } from 'react-redux'
+import React from 'react';
 import Reducer from '../lib/reducers'
+import thunk from 'redux-thunk';
+import withRedux from 'next-redux-wrapper'
 
 const makeStore = (initialState, options) => {
-  return createStore(Reducer, initialState);
+  return createStore(Reducer, initialState, applyMiddleware(thunk));
 };
 
 class MyApp extends App {
@@ -24,9 +27,7 @@ class MyApp extends App {
 
     return (
       <Provider store = {store}>
-        <Container>
           <Component {...pageProps} />
-        </Container>
       </Provider>
     );
   }

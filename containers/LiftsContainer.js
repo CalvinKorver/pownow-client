@@ -3,19 +3,8 @@ import React from 'react';
 import { addLifts } from '../lib/actions'
 import { connect } from 'react-redux'
 
-const LiftsContainer = (props) => {
-    const submitForm = (formValues) => {
-        console.log(formValues)
-    }
-    return(
-        <LiftsComponent
-        onSubmit={submitForm}
-        />
-    )
-}
-
 const mapStateToProps = state => ({
-    lifts: state.lifts
+    lifts: state.userData.lifts
   })
   
   const mapDispatchToProps = dispatch => ({
