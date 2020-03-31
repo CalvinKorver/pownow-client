@@ -15,4 +15,20 @@ const Lifts = () => {
     )
 }
 
+Lifts.getInitialProps = async ({res, store}) => {
+    console.log('lifts initial props')
+    console.log(store.getState().userData)
+    if (!store.getState().userData.phone) {
+        res.writeHead(301, {
+            Location: '/'
+        });
+        res.end()
+    } else if (!store.getState().userData.location) {
+        res.writeHead(301, {
+            Location: '/pages/selectresort'
+        })
+    }
+    return {}
+}
+
 export default connect(state => state)(Lifts)

@@ -1,47 +1,53 @@
 import { Image, Menu } from 'semantic-ui-react'
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { RightMenu, StyledMenu } from '../style/style'
 
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 
-export default class PowMenu extends Component {
-  state = { activeItem: 'home' }
+const PowMenu = () => {
+  const [activeItem, setActiveItem] = useState('home');
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  const router = useRouter()
 
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <StyledMenu secondary>
-        <Menu.Item
-          name='How it Works'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='...'
-          active={activeItem === '...'}
-          onClick={this.handleItemClick}
-        />
-        <Link href="/">
-          <Menu.Item style={{ margin: '0 auto' }}>
-            <Image style={{ width: '100px' }} src="/pow-logo.png" alt="" />
-          </Menu.Item>
-        </Link>
-        <RightMenu >
-          <Menu.Item
-            name='Log In'
-            active={activeItem === 'logout'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='Signup'
-            active={activeItem === 'friends'}
-            onClick={this.handleItemClick}
-          />
-        </RightMenu>
-      </StyledMenu>
-    )
+  const handleItemClick = (e, { name, link }) => {
+    console.log(link)
+    setActiveItem(name)
+    router.push(link)
   }
+
+  return (
+    <StyledMenu secondary>
+      <Menu.Item
+        name='How it Works'
+        link = '/what'
+        active={activeItem === 'How it Works'}
+        onClick={handleItemClick}
+      />
+      <Menu.Item
+        name='...'
+        active={activeItem === '...'}
+        onClick={handleItemClick}
+      />
+      <Link href="/">
+        <Menu.Item style={{ margin: '0 auto' }}>
+          <Image style={{ width: '100px' }} src="/pow-logo.png" alt="" />
+        </Menu.Item>
+      </Link>
+      <RightMenu >
+        <Menu.Item
+          name='Log In'
+          active={activeItem === 'logout'}
+          onClick={handleItemClick}
+        />
+        <Menu.Item
+          name='Signup'
+          active={activeItem === 'friends'}
+          onClick={handleItemClick}
+        />
+      </RightMenu>
+    </StyledMenu>
+  )
 }
+
+export default PowMenu

@@ -4,5 +4,5 @@
     background-image: url('./background.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: 5% 100%;`;
+    background-position: 5% 100%;
 }

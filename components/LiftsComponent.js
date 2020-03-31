@@ -1,10 +1,10 @@
 import { BackButton, DifficultyIcon, MyForm } from '../style/style';
-import { Button, Checkbox, Container, Divider, Form, Header } from 'semantic-ui-react/';
+import { Checkbox, Form, Header, Message } from 'semantic-ui-react/';
 import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
 
 import Layout from './Layout';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 import styled from "styled-components";
 import { useRouter } from 'next/router'
 
@@ -12,6 +12,7 @@ const LiftsComponent = (props) => {
 
     const router = useRouter()
     const [lifts, setLifts] = useState(props.userData.lifts);
+    const [error, setError] = useState(false);
 
     const handleCheckBox = (value) => {
         const newArray = lifts.map((current, index) => {
@@ -27,7 +28,12 @@ const LiftsComponent = (props) => {
     }
 
     const submit = e => {
+        setError(false)
         e.preventDefault()
+        if (!lifts.find(o => o.checked === true)) {
+            setError(true);
+            return;
+        }
         props.addLifts(lifts)
         router.push("/signup/confirm")
     }
@@ -51,9 +57,14 @@ const LiftsComponent = (props) => {
 
     return (
         <Layout>
-            <MyForm id="signup3" onSubmit={submit}>
+            <MyForm className={error? 'error' : null} id="signup3" onSubmit={submit}>
                 <Header as='h3'>Which lifts would you like to track?</Header>
                 {liftCheckBoxes}
+                <Message
+                    error
+                    header='Validation Error'
+                    content='Make sure that you select at least one lift!'
+                />
                 <Form.Button fluid type='submit'>Next</Form.Button>
                 <Link href="/signup/selectresort">
                     <BackButton fluid >Go Back</BackButton>

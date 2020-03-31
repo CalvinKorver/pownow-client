@@ -8,4 +8,14 @@ const SelectResort = (props) => {
     )
 }
 
+SelectResort.getInitialProps = async ({res, store}) => {
+    if (!store.getState().userData.phone) {
+        res.writeHead(301, {
+            Location: '/'
+        });
+        res.end()
+    }
+    return {}
+}
+
 export default connect(state => state)(SelectResort);

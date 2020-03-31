@@ -11,32 +11,43 @@ const Layout = props => {
     return (
     <div>
         <PowMenu/>
+        <div id='background'>
         <Grid centered >
             <Grid.Row >
                 <Grid.Column className= 'mobile tablet only'>
                     <HeaderContainer>
                         {PowHead}
+                        
                     </HeaderContainer>
                 </Grid.Column>
             </Grid.Row>
 
-            <BackgroundImageRow className='background'>
+            <BackgroundImageRow>
+                
                 <Grid.Column style={{paddingTop: '10%'}}  className='computer only' computer={7}>
                 {PowHead}
+               
                 </Grid.Column>
-                <Grid.Column style={{paddingTop: '15%'}} mobile={16} tablet={8} computer={8} >
+                <Grid.Column style={{paddingTop: '15%'}} mobile={16} tablet={8} computer={6} >
                     <Container>
                         <div style={{margin: '0 auto', width:'425px'}}>
-                            <Segment style={{position:'absolute', transform: 'translateY(-30%)', width: '425px', padding: '30px'}}>
+                            <Segment style={{minHeight: '100px', position:'absolute', transform: 'translateY(-30%)', width: '425px', padding: '30px'}}>
                         {props.children}
                         </Segment>
                         </div>
                     </Container>
                 </Grid.Column>
             </BackgroundImageRow>
-
-            
         </Grid>
+                </div>
+        <style jsx>{`
+        div#background {
+            height: 90vh !important;
+    background-image: url('/background.png') !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: 5% 100% !important;
+        }`}</style>
     </div>
     )
 }

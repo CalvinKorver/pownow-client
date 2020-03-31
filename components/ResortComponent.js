@@ -1,16 +1,17 @@
 import { BackButton, MyForm } from '../style/style';
-import { Dropdown, Form, Header } from 'semantic-ui-react/';
+import { Dropdown, Form, Header, Message } from 'semantic-ui-react/';
 import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
 
 import Layout from './Layout';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 import { useRouter } from 'next/router'
 
 const ResortComponent = (props) => {
     const router = useRouter()
     const [resort, setResort] = useState('');
     const [date, setDate] = useState('');
+    const [resortError, setResortError] = useState(false);
 
     const friendOptions = [
         {
@@ -23,8 +24,13 @@ const ResortComponent = (props) => {
 
     const submit = e => {
         e.preventDefault()
+        setResortError(false)
+        if (!resort || !date) {
+            setResortError(true);
+            return;
+        }
         props.addDate(date)
-        props.addLocation(location)
+        props.addLocation(resort)
         router.push("/signup/lifts")
     }
 
@@ -35,7 +41,7 @@ const ResortComponent = (props) => {
 
     return (
         <Layout>
-            <MyForm id="signup2" onSubmit={e => submit(e)}>
+            <MyForm className={resortError ? 'error' : ''} id="signup2" onSubmit={e => submit(e)}>
                 <Header as='h3'>Select your ski resort and when you're visiting</Header>
                 <Form.Field>
                     <Dropdown
@@ -52,6 +58,11 @@ const ResortComponent = (props) => {
                     onChange={handleChange}
                     placeholder='Choose a Date'/>
                 <Form.Button fluid type='submit'>Next</Form.Button>
+                <Message
+                    error
+                    header='Validation Error'
+                    content='Make sure you select a resort and date.'
+                />
                 <Link href="/">
                     <BackButton fluid >Go Back</BackButton>
                 </Link>
