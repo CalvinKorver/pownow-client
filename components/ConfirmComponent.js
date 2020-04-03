@@ -92,9 +92,9 @@ const ConfirmComponent = (props) => {
         userDisplay = confirm;
     }
     return (
-        <Layout>
+        <HomepageLayout>
             {userDisplay}
-        </Layout>
+        </HomepageLayout>
     )
 }
 

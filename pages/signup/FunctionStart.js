@@ -1,6 +1,6 @@
 import 'react-phone-input-2/lib/style.css';
 
-import { Form, Header, Message } from 'semantic-ui-react/';
+import { Form, Header, Message, Transition } from 'semantic-ui-react/';
 import React, { useState } from 'react';
 import { addArea, addCountryCode, addPhone } from '../../lib/actions'
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MyForm } from '../../style/style';
 import PhoneInput from 'react-phone-input-2';
 import { connect } from "react-redux";
-import startsWith from 'lodash.startswith';
-import styled from "styled-components";
 import { useRouter } from 'next/router'
 
 const FunctionStart = (props) => {
@@ -61,12 +59,14 @@ const FunctionStart = (props) => {
                         onChange={(value, data, event) => setPhoneHandler(value, data, event)} 
                           />
                 </Form.Field>
+                <Transition visible={error} animation='fade down' duration={500}>
                 <Message
                     error
                     header='Validation Error'
                     content='Make sure that you enter a US phone number with an area code.'
                 />
-                <Form.Button fluid type='submit' disabled={error}>Next</Form.Button>
+                </Transition>
+                <Form.Button fluid type='submit'>Next</Form.Button>
             </MyForm>
         </div>
     )

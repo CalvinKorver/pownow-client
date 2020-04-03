@@ -12,6 +12,7 @@ const PowMenu = () => {
 
   const handleItemClick = (e, { name, value }) => {
     setActiveItem(name)
+    console.log(value)
     router.push(value)
   }
 
@@ -28,11 +29,13 @@ const PowMenu = () => {
         active={activeItem === '...'}
         onClick={handleItemClick}
       />
-      <Link href="/">
-        <Menu.Item style={{ margin: '0 auto' }}>
+        <Menu.Item 
+          style={{ margin: '0 auto' }}
+          onClick={handleItemClick}
+          active={activeItem === 'home'}
+          value='/'>
           <Image style={{ width: '100px' }} src="/pow-logo.png" alt="" />
         </Menu.Item>
-      </Link>
       <RightMenu >
         <Menu.Item
           name='Log In'

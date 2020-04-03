@@ -40,7 +40,7 @@ const ResortComponent = (props) => {
     }
 
     return (
-        <Layout>
+        <HomepageLayout>
             <MyForm className={resortError ? 'error' : ''} id="signup2" onSubmit={e => submit(e)}>
                 <Header as='h3'>Select your ski resort and when you're visiting</Header>
                 <Form.Field>
@@ -67,7 +67,7 @@ const ResortComponent = (props) => {
                     <BackButton fluid >Go Back</BackButton>
                 </Link>
             </MyForm>
-        </Layout>
+        </HomepageLayout>
     )
 }
 

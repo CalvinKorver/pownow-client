@@ -56,7 +56,7 @@ const LiftsComponent = (props) => {
     }
 
     return (
-        <Layout>
+        <HomepageLayout>
             <MyForm className={error? 'error' : null} id="signup3" onSubmit={submit}>
                 <Header as='h3'>Which lifts would you like to track?</Header>
                 {liftCheckBoxes}
@@ -70,7 +70,7 @@ const LiftsComponent = (props) => {
                     <BackButton fluid >Go Back</BackButton>
                 </Link>
             </MyForm>
-        </Layout>
+        </HomepageLayout>
     )
 }
 

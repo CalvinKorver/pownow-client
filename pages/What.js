@@ -1,9 +1,9 @@
 import { Grid, Header, Message, Responsive, Row, Segment } from "semantic-ui-react"
-import { HowImage, LargerP } from "../style/style";
 
+import { DEFAULT_VARIANTS } from "../lib";
 import MobileDetect from "mobile-detect";
-import PowMenu from "../components/PowMenu"
 import ResponsiveContainer from "../components/ResponsiveContainer";
+import { motion } from "framer-motion";
 
 const What = (props) => {
     const copy = [
@@ -12,20 +12,14 @@ const What = (props) => {
         <span>Go shred!</span>
     ]
     const img_path = ['/cablecar.png', '/cellphone.png', '/skier.png']
-    console.log('in what')
-    console.log(props)
     return (
-        <div>
-            <PowMenu />
-            {/* <Message>
-                <Message.Header>Information about your device</Message.Header>
-                <pre>{JSON.stringify(props.deviceInfo, null, 2)}</pre>
-            </Message> */}
-                    <ResponsiveContainer 
-                        getWidth={getWidthFactory(props.isMobileFromSSR)} 
-                        content={{copy: copy, img_path:img_path}}/>
-
-        </div>
+        <motion.div initial="exit" animate="enter" exit="exit">
+            <motion.div variants={DEFAULT_VARIANTS}>
+                <ResponsiveContainer
+                    getWidth={getWidthFactory(props.isMobileFromSSR)}
+                    content={{ copy: copy, img_path: img_path }} />
+            </motion.div>
+        </motion.div>
     )
 }
 

@@ -45,15 +45,17 @@ const DesktopContainer = (props, { children, getWidth }) => {
     const [vis2, setVis2] = useState(false);
     const [vis3, setVis3] = useState(false);
 
-    setTimeout(useEffect(() => setVis1(true)), 500)
+    useEffect(() => {setVis1(true)})
 
     const vis = [vis1, vis2, vis3]
-    const durations = [2000, 3000, 4000]
+    const durations = [2000, 1500, 1000]
     // const set_vis = [setVis1(), setVis2(), setVis3()]
 
     const handleCallback = (i) => {
-        i == 0 ? setTimeout(setVis2(true), 1000)  : null
-        i == 1 ? setTimeout(setVis3(true), 1000) : null
+        console.log('hi')
+        console.log(i)
+        i == 0 ? setTimeout(() => setVis2(true), 500) : null
+        i == 1 ? setTimeout(() => setVis3(true), 500) : null
     }
 
     const content = props.content
