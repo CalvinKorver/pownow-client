@@ -10,17 +10,16 @@ const PowMenu = () => {
 
   const router = useRouter()
 
-  const handleItemClick = (e, { name, link }) => {
-    console.log(link)
+  const handleItemClick = (e, { name, value }) => {
     setActiveItem(name)
-    router.push(link)
+    router.push(value)
   }
 
   return (
     <StyledMenu secondary>
       <Menu.Item
         name='How it Works'
-        link = '/what'
+        value = '/what'
         active={activeItem === 'How it Works'}
         onClick={handleItemClick}
       />

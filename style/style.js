@@ -10,7 +10,6 @@ export const DifficultyIcon = styled(Image)`max-width: 16px !important; position
 export const StyledMenu = styled(Menu)`height: 100px !important; margin-top: 20px !important; padding-left: 40px; padding-right:40px`;
 export const RightMenu = styled(Menu.Menu)`margin-left: 0 !important;`;
 export const BackgroundImageRow = styled(Grid.Row)`padding-top: 0%;`;
-export const HowImage = styled(Image)`max-width: 200px !important; 
-max-height:200px !important;
+export const HowImage = styled(Image)`;
 margin: 0 auto;`;
 export const LargerP = styled.p`font-size: 24px !important; font-weight: 300`;

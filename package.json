@@ -17,6 +17,8 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "fetch": "^1.1.0",
+    "framer-motion": "^1.10.3",
+    "mobile-detect": "^1.4.4",
     "next": "^9.3.1",
     "next-compose-plugins": "^2.2.0",
     "next-redux-wrapper": "^5.0.0",
