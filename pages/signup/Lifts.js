@@ -1,23 +1,14 @@
-import { BackButton, DifficultyIcon, MyForm } from '../../style/style';
-import { Button, Checkbox, Container, Divider, Form, Header } from 'semantic-ui-react/';
-import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-
-import Layout from '../../components/Layout';
 import LiftsContainer from '../../containers/LiftsContainer'
-import Link from 'next/link';
-import styled from "styled-components";
-import { useRouter } from 'next/router'
+import React from 'react';
+import { connect } from 'react-redux';
 
 const Lifts = () => {
     return (
-        <LiftsContainer/>
+        <LiftsContainer />
     )
 }
 
-Lifts.getInitialProps = async ({res, store}) => {
-    console.log('lifts initial props')
-    console.log(store.getState().userData)
+Lifts.getInitialProps = async ({ res, store }) => {
     if (!store.getState().userData.phone) {
         res.writeHead(301, {
             Location: '/'

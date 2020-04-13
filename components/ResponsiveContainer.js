@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 
 const ResponsiveContainer = (props, { children, getWidth }) => {
-    console.log(props)
     return (
         <div>
             <DesktopContainer getWidth={getWidth} content={props.content}>{children}</DesktopContainer>
@@ -52,8 +51,6 @@ const DesktopContainer = (props, { children, getWidth }) => {
     // const set_vis = [setVis1(), setVis2(), setVis3()]
 
     const handleCallback = (i) => {
-        console.log('hi')
-        console.log(i)
         i == 0 ? setTimeout(() => setVis2(true), 500) : null
         i == 1 ? setTimeout(() => setVis3(true), 500) : null
     }

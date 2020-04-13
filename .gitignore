@@ -25,3 +25,5 @@ chrome-user-data
 *.swo
 .next/
 .semantic/dist/
+
+.now

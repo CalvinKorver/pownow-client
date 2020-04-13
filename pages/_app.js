@@ -20,11 +20,11 @@ const MyApp = (props) => {
 
   return (
     <Provider store={store} >
-        <Layout>
-      <AnimatePresence exitBeforeEnter>
+      <Layout>
+        <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
-        </Layout>
+        </AnimatePresence>
+      </Layout>
     </Provider>
   );
 }

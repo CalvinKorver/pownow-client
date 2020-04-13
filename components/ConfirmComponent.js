@@ -2,14 +2,15 @@ import { BackButton, DifficultyIcon, HeaderContainer, MyForm } from '../style/st
 import { Button, Container, Divider, Header, Icon, List, Loader, Message } from 'semantic-ui-react/';
 import { useEffect, useState } from 'react'
 
-import Layout from './Layout';
+import { FETCH_PRODUCTS_SUCCESS } from '../lib/actions';
+import HomepageLayout from './HomepageLayout';
 import Link from 'next/link';
 import { connect } from "react-redux";
 
 const ConfirmComponent = (props) => {
+    console.log(props)
     let liftsElement;
     const [error, setError] = useState(false);
-    const [postResponse, setpostResponse] = useState({});
 
     if (props.userData.lifts) {
         liftsElement = props.userData.lifts.map(lift => {
@@ -84,13 +85,16 @@ const ConfirmComponent = (props) => {
         </Container>
     )
 
-    if (props.service.success) {
-        userDisplay = success
-    } else if (props.service.pending) {
-        userDisplay = loading
-    } else {
+    console.log(props.service)
+    if (!props.service.type) {
         userDisplay = confirm;
+    } else if (props.service.type === FETCH_PRODUCTS_SUCCESS) {
+        console.log(success)
+        userDisplay = success
+    } else  if (props.service.type === FETCH_PRODUCTS_PENDING) {
+        userDisplay = loading
     }
+
     return (
         <HomepageLayout>
             {userDisplay}
