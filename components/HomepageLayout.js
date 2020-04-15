@@ -3,7 +3,7 @@
 import { BackgroundImageRow, HeaderContainer, PowHeader } from '../style/style';
 import { Container, Grid, Segment } from 'semantic-ui-react';
 
-import {INDEX_VARIANTS} from '../lib';
+import { INDEX_VARIANTS } from '../lib';
 import { motion } from 'framer-motion';
 
 const HomepageLayout = props => {
@@ -11,45 +11,43 @@ const HomepageLayout = props => {
     return (
         < motion.div initial="exit" animate="enter" exit="exit" >
             <motion.div variants={INDEX_VARIANTS}>
-            <div id='background'>
-                <Grid centered >
-                    <Grid.Row >
-                        <Grid.Column className='mobile tablet only'>
-                            <HeaderContainer>
-                                {PowHead}
+                {/* <div id='background'> */}
 
-                            </HeaderContainer>
-                        </Grid.Column>
-                    </Grid.Row>
 
-                    <BackgroundImageRow>
-
-                        <Grid.Column style={{ paddingTop: '10%' }} className='computer only' computer={7}>
+                <Grid className='mobile tablet only' padded style={{ marginTop: '5% !important' }}>
+                    <Grid.Column >
+                        <HeaderContainer>
                             {PowHead}
+                        </HeaderContainer>
+                    </Grid.Column>
+                </Grid>
 
-                        </Grid.Column>
-                        <Grid.Column style={{ paddingTop: '15%' }} mobile={16} tablet={8} computer={6} >
-                            <Container>
-                                <div style={{ margin: '0 auto', width: '425px' }}>
-                                    <Segment style={{ minHeight: '100px', position: 'absolute', transform: 'translateY(-30%)', width: '425px', padding: '30px' }}>
+                <div id="background">
+                    <Grid padded>
+                        <Grid.Column width={9} ></Grid.Column>
+                        <Grid.Column style={{ marginTop: '8%' }} mobile={16} tablet={8} computer={5} >
+                            <Container style={{ maxWidth: '430px', margin: '0 auto' }}>
+                                <div style={{ margin: '0 auto' }}>
+                                    <Segment style={{ minHeight: '100px', padding: '30px' }}>
                                         {props.children}
                                     </Segment>
                                 </div>
                             </Container>
                         </Grid.Column>
-                    </BackgroundImageRow>
-                </Grid>
-            </div>
-            <style jsx>{`
+                    </Grid>
+                </div>
+                {/* </div> */}
+                <style jsx>{`
         div#background {
             height: 90vh !important;
-    background-image: url('/background.png') !important;
-    background-size: 100% !important;
+    background-image: url('/mountain.png') !important;
+    background-size: 75% !important;
     background-repeat: no-repeat !important;
-    background-position: 5% 100% !important;
+    background-position: -4% 125% !important;
+    background-opacity: 95% important;
         }`}</style>
-       </motion.div>
-       </motion.div>
+            </motion.div>
+        </motion.div>
     )
 }
 

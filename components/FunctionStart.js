@@ -51,6 +51,11 @@ const FunctionStart = (props) => {
         <motion.div initial="exit" animate="enter" exit="exit" >
             <motion.div variants={DEFAULT_VARIANTS}>
                 <MyForm className={error ? 'error' : ''} id="signup1" onSubmit={e => submit(e)}>
+                    <div style={{marginBottom: '50px', marginTop: '35px'}}> 
+                    <Header className='centered' as='h2' >
+                    Instant text messages <br/>for opening ski lifts <br/>to get your <br/>fresh powder first
+                    </Header>
+                    </div>
                     <Header className="centered" as='h3' >Get started by entering your phone number:</Header>
                     <Form.Field className="centered">
                         <PhoneInput
