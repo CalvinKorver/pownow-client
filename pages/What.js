@@ -36,8 +36,6 @@ export const getWidthFactory = isMobileFromSSR => () => {
 
 
 export async function getServerSideProps(ctx) {
-    // const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-    console.log(ctx)
     const req = ctx.req
     if (req) {
         const md = new MobileDetect(req.headers["user-agent"]);

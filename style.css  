@@ -1,8 +1,0 @@
-.background {
-    padding-top: 0%; 
-    height: 85vh;
-    background-image: url('./background.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 5% 100%;
-}

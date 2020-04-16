@@ -1,11 +1,11 @@
 import 'react-phone-input-2/lib/style.css';
 
-import { Form, Header, Message, Transition } from 'semantic-ui-react/';
+import { DEFAULT_VARIANTS, INDEX_VARIANTS } from '../lib';
+import { Form, Grid, Header, Message, Transition } from 'semantic-ui-react/';
 import React, { useState } from 'react';
 import { addArea, addCountryCode, addPhone } from '../lib/actions'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DEFAULT_VARIANTS } from '../lib';
 import { MyForm } from '../style/style';
 import PhoneInput from 'react-phone-input-2';
 import { connect } from "react-redux";
@@ -49,13 +49,15 @@ const FunctionStart = (props) => {
     }
     return (
         <motion.div initial="exit" animate="enter" exit="exit" >
-            <motion.div variants={DEFAULT_VARIANTS}>
+            <motion.div variants={INDEX_VARIANTS}>
                 <MyForm className={error ? 'error' : ''} id="signup1" onSubmit={e => submit(e)}>
+                    <Grid className='computer only' centered>
                     <div style={{marginBottom: '50px', marginTop: '35px'}}> 
-                    <Header className='centered' as='h2' >
+                    <Header className='centered' as='h2'  >
                     Instant text messages <br/>for opening ski lifts <br/>to get your <br/>fresh powder first
                     </Header>
                     </div>
+                    </Grid>
                     <Header className="centered" as='h3' >Get started by entering your phone number:</Header>
                     <Form.Field className="centered">
                         <PhoneInput

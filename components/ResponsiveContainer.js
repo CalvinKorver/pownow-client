@@ -57,7 +57,6 @@ const DesktopContainer = (props, { children, getWidth }) => {
 
     const content = props.content
     const cols = content.copy.map((value, i) => {
-        console.log(content.img_path[i])
         return (
             <Grid.Column key={i}>
                 <Responsive minWidth={425} >

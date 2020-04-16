@@ -1,5 +1,6 @@
 import { DEFAULT_VARIANTS, INDEX_VARIANTS } from '../lib';
 
+import { BackgroundDiv } from '../style/style';
 import FunctionStart from '../components/FunctionStart';
 import HomepageLayout from '../components/HomepageLayout';
 import { createStore } from 'redux';
@@ -11,13 +12,14 @@ const store = createStore(rootReducer)
 
 export const Home = () => {
   return (
-    <HomepageLayout >
-      <motion.div initial="exit" animate="enter" exit="exit">
+      <motion.div initial="exit" animate="enter" exit="exit" >
         <motion.div variants={DEFAULT_VARIANTS}>
-          <FunctionStart />
+          <HomepageLayout >
+            <FunctionStart />
+          </HomepageLayout>
         </motion.div>
       </motion.div>
-    </HomepageLayout>
+
   )
 }
 

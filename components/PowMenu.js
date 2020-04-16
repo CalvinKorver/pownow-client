@@ -13,20 +13,21 @@ const PowMenu = (props) => {
 
   const handleItemClick = (e, { name, value }) => {
     setActiveItem(name)
+    props.handleMenuChange({name, value})
     value ? router.push(value) : null
+    
   }
 
   return (
     <Grid>
-      <Grid.Column width={1} />
-      <Grid.Column width={14}>
-        <StyledMenu secondary>
+      <Grid.Column width={1} className='computer only'/>
+      <Grid.Column computer={14} mobile={16} tablet={16}>
+        <StyledMenu secondary stackable>
           <Menu.Item header 
             name='/'
             value='/'
-            onClick={handleItemClick}
-             >
-            <Image style={{ width: '175px' }} src="/pow-logo.png" alt="" />
+            onClick={handleItemClick}>
+            <Image style={{ maxWidth: '175px' }} src="/pow-logo.png" alt="" />
           </Menu.Item>
           <Menu.Menu position='right'>
             <StyledMenuItem
@@ -42,7 +43,7 @@ const PowMenu = (props) => {
           </Menu.Menu>
         </StyledMenu>
       </Grid.Column>
-      <Grid.Column width={1} />
+      <Grid.Column width={1} className='computer only'/>
     </Grid>
   )
 }
