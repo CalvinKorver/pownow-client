@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 
 const What = (props) => {
     const copy = [
-        <span>Identify lifts you want to <br /> be notified for and sign up</span>,
-        <span>When your lift opens, <br />we will send you a text <br />within seconds!</span>,
-        <span>Go shred!</span>
+        <Header as='h3' textAlign='center'>Identify lifts you want to <br /> be notified for and sign up</Header>,
+        <Header as='h3' textAlign='center'>When your lift opens, <br />we will send you a text <br />within seconds!</Header>,
+        <Header as='h3' textAlign='center'>Go shred!</Header>
     ]
     const img_path = ['/cablecar.png', '/cellphone.png', '/skier.png']
     return (

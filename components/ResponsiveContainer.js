@@ -18,12 +18,12 @@ const MobileContainer = (props, { children, getWidth }) => {
     const cols = content.copy.map((value, i) => {
         return (<Grid.Column key={i}>
             {/* Small Screen */}
-            <Segment textAlign='center' style={{ padding: '5%' }}>
+            {/* <Segment textAlign='center' style={{ padding: '5%' }}> */}
                 <Image style={{ margin: '0 auto', maxWidth: '150px' }} className="how-img" src={content.img_path[i]}></Image>
                 <Header as='h4' />
                 {value}
                 <Header />
-            </Segment>
+            {/* </Segment> */}
         </Grid.Column>
         )
     })
@@ -32,7 +32,7 @@ const MobileContainer = (props, { children, getWidth }) => {
             fireOnMount
             getWidth={getWidth}
             maxWidth={Responsive.onlyMobile.maxWidth}>
-            <Grid centered columns={1}>
+            <Grid centered columns={1} style={{marginTop: '5%'}}>
                 {cols}
             </Grid>
         </Responsive>

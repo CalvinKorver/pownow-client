@@ -51,7 +51,7 @@ const LiftStatusGrid = ({ children }) => (
     <motion.div variants={DEFAULT_VARIANTS}>
       <Grid centered columns={2} style={{marginTop: '3%'}}>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column computer={8} mobile={16}>
             {children}
           </Grid.Column>
         </Grid.Row>
