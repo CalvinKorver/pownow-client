@@ -2,9 +2,11 @@ import { motion, useAnimation } from "framer-motion"
 import { useEffect, useState } from "react";
 
 import { BackgroundDiv } from "../style/style"
+import MobileMenu from "./MobileMenu"
 import PowMenu from "./PowMenu"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, getWidth }) => {
+    console.log(getWidth)
 
     const [currentPage, setCurrentPage] = useState('/');
 
@@ -59,11 +61,10 @@ const Layout = ({ children }) => {
     }
 
     return (
-        <div className="main-continer">
+        <div className="main-container">
             <motion.div animate={controls} style={{backgroundPosition: '-4% 100%'}}>
-                <PowMenu 
-                handleMenuChange={handleMenuChange} 
-                />
+                <PowMenu getWidth={getWidth} handleMenuChange={handleMenuChange} getWidth={getWidth}/>
+                <MobileMenu getWidth={getWidth} handleMenuChange={handleMenuChange} getWidth={getWidth}/>
                 {children}
             </motion.div>
         </div>
