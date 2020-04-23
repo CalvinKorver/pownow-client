@@ -22,7 +22,7 @@ const MobileMenu = (props, { getWidth }) => {
       fireOnMount
       getWidth={getWidth}
       maxWidth={Responsive.onlyMobile.maxWidth}>
-      <MobileStyledMenu secondary style={{ width: '100%' }}>
+      <MobileStyledMenu secondary>
         <Menu.Item header
           name='/'
           value='/'

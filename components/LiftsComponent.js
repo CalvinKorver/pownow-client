@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { useRouter } from 'next/router'
 
 const LiftsComponent = (props) => {
-
+    console.log(props)
     const router = useRouter()
     const [lifts, setLifts] = useState(props.userData.lifts);
     const [error, setError] = useState(false);
@@ -70,7 +70,7 @@ const LiftsComponent = (props) => {
                             content='Make sure that you select at least one lift!'
                         />
                         <Form.Button fluid type='submit'>Next</Form.Button>
-                        <Link href="/signup/selectresort">
+                        <Link href="/signup/SelectResort">
                             <BackButton fluid >Go Back</BackButton>
                         </Link>
                     </MyForm>

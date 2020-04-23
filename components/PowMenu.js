@@ -23,9 +23,9 @@ const PowMenu = (props, {getWidth}) => {
       getWidth={getWidth}
       minWidth={Responsive.onlyTablet.minWidth}>
       <Grid>
-        <Grid.Column width={1} className='computer only' />
-        <Grid.Column computer={14} mobile={16} tablet={16}>
-          <StyledMenu secondary style={{ width: '100%' }}>
+        <Grid.Column width={1}></Grid.Column>
+        <Grid.Column width={14}>
+          <StyledMenu secondary>
             <Menu.Item header
               name='/'
               value='/'
@@ -46,7 +46,7 @@ const PowMenu = (props, {getWidth}) => {
             </Menu.Menu>
           </StyledMenu>
         </Grid.Column>
-        <Grid.Column width={1} className='computer only' />
+        <Grid.Column width={1}/>
       </Grid>
     </Responsive>
   )

@@ -3,7 +3,6 @@ import { Divider, Grid, Responsive, Table } from 'semantic-ui-react';
 import { DifficultyIcon } from '../style/style';
 import Weather from './Weather'
 import _ from 'lodash'
-import { motion } from 'framer-motion';
 import { useState } from "react";
 
 const LiftTable = (props, {children, getWidth}) => {
@@ -26,6 +25,7 @@ const LiftTable = (props, {children, getWidth}) => {
     return (
         <div>
             <DesktopTable 
+                weather={props.weather}
                 getWidth={getWidth} 
                 content={props.content} 
                 lifts={lifts} 
@@ -34,28 +34,25 @@ const LiftTable = (props, {children, getWidth}) => {
                 handleSort={handleSort}>{children} </DesktopTable>
 
             <MobileTable 
+                weather={props.weather}
                 getWidth={getWidth} 
                 content={props.content} 
                 lifts={lifts} 
                 column={column} 
                 direction={direction}
                 handleSort={handleSort}>{children} </MobileTable>
-
-            
-            {/* <MobileContainer getWidth={getWidth} content={props.content}>{children} </MobileContainer> */}
         </div>
     )
 }
 
 const DesktopTable = (props, { children, getWidth }) => {
-    console.log(getWidth)
     const column = props.column
     const direction = props.direction
     const table_rows = props.lifts.map((value, index) => {
         return (
             <Table.Row key={index}>
                 <Table.Cell >{value.LiftName}</Table.Cell>
-                <Table.Cell><LiftDifficulty difficulty={value.Difficulty} /></Table.Cell>
+                <Table.Cell ><LiftDifficulty difficulty={value.Difficulty} /></Table.Cell>
                 <Table.Cell>{value.Status}</Table.Cell>
             </Table.Row>
         )
@@ -141,6 +138,7 @@ const MobileTable = (props, { children, getWidth }) => {
                     <Table.Row>
                         <Table.HeaderCell>
                             Squaw Valley
+                            <Weather weather={props.weather} />
                         </Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>

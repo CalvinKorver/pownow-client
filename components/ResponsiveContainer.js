@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 import { motion } from 'framer-motion';
 
-const ResponsiveContainer = (props, { children, getWidth }) => {
+const ResponsiveContainer = (props) => {
     return (
         <div>
-            <DesktopContainer getWidth={getWidth} content={props.content}>{children}</DesktopContainer>
-            <MobileContainer getWidth={getWidth} content={props.content}>{children} </MobileContainer>
+            <DesktopContainer getWidth={props.getWidth} content={props.content}>{props.children}</DesktopContainer>
+            <MobileContainer getWidth={props.getWidth} content={props.content}>{props.children} </MobileContainer>
         </div>
     )
 }
@@ -30,7 +30,7 @@ const MobileContainer = (props, { children, getWidth }) => {
     return (
         <Responsive
             fireOnMount
-            getWidth={getWidth}
+            getWidth={props.getWidth}
             maxWidth={Responsive.onlyMobile.maxWidth}>
             <Grid centered columns={1} style={{marginTop: '5%'}}>
                 {cols}
@@ -59,8 +59,10 @@ const DesktopContainer = (props, { children, getWidth }) => {
     const cols = content.copy.map((value, i) => {
         return (
             <Grid.Column key={i}>
-                <Responsive minWidth={425} >
-                    {/* Large screen */}
+                <Responsive
+                    fireOnMount
+                    getWidth={props.getWidth}
+                    minWidth={Responsive.onlyTablet.minWidth}>
                     <Transition visible={vis[i]} animation='fade' duration={durations[i]} onStart={() => handleCallback(i)}>
                         <div style={{ height: ' 80%' }}>
                             <Segment textAlign='center' style={{ padding: '10%', height: '100%' }}>

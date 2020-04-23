@@ -3,22 +3,18 @@ import { useEffect, useState } from "react";
 
 import { BackgroundDiv } from "../style/style"
 import MobileMenu from "./MobileMenu"
+import NoSSR from 'react-no-ssr'
 import PowMenu from "./PowMenu"
 
-const Layout = ({ children, getWidth }) => {
-    console.log(getWidth)
-
+const Layout = (props) => {
     const [currentPage, setCurrentPage] = useState('/');
-
     const controls = useAnimation()
 
     useEffect(() => {
-        currentPage === '/' ? changeBackgroundToDefault() : null
+        currentPage === '/' ? changeBackgroundToDefault() : changeBackgroundToBlank()
     })
-    
 
     const changeBackgroundToBlank = () => {
-        console.log('changing to blank')
         controls.start({
             backgroundImage: 'none',
             backgroundSize: '75%',
@@ -30,7 +26,6 @@ const Layout = ({ children, getWidth }) => {
 
     const changeBackgroundToDefault = () => {
         const backgroundImg = "url('/mountain.png')"
-        console.log('changing to default')
         controls.start({
             transition: { duration: 1 },
             transitionEnd: {
@@ -60,15 +55,19 @@ const Layout = ({ children, getWidth }) => {
         setCurrentPage(value)
     }
 
+    let menu
+    // menu =  <PowMenu handleMenuChange={handleMenuChange}/>
+        // menu = <MobileMenu width={size.width} handleMenuChange={handleMenuChange}/>
     return (
         <div className="main-container">
             <motion.div animate={controls} style={{backgroundPosition: '-4% 100%'}}>
-                <PowMenu getWidth={getWidth} handleMenuChange={handleMenuChange} getWidth={getWidth}/>
-                <MobileMenu getWidth={getWidth} handleMenuChange={handleMenuChange} getWidth={getWidth}/>
-                {children}
+                <NoSSR>
+                <PowMenu handleMenuChange={handleMenuChange}/>
+                <MobileMenu handleMenuChange={handleMenuChange}/>
+                </NoSSR>
+                {props.children}
             </motion.div>
         </div>
     )
 }
-
 export default Layout

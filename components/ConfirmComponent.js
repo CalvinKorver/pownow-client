@@ -2,13 +2,14 @@ import { BackButton, DifficultyIcon, HeaderContainer, MyForm } from '../style/st
 import { Button, Container, Divider, Header, Icon, List, Loader, Message } from 'semantic-ui-react/';
 import { useEffect, useState } from 'react'
 
+import { DEFAULT_VARIANTS } from '../lib';
 import { FETCH_PRODUCTS_SUCCESS } from '../lib/actions';
 import HomepageLayout from './HomepageLayout';
-import Link from 'next/link';
-import { connect } from "react-redux";
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 const ConfirmComponent = (props) => {
-    console.log(props)
+    const router = useRouter()
     let liftsElement;
     const [error, setError] = useState(false);
 
@@ -39,10 +40,15 @@ const ConfirmComponent = (props) => {
         props.startService(props.userData)
     }
 
+    const handleBack = () => {
+        console.log('in handle back')
+        router.push('/signup/Lifts')
+    }
+
     let userDisplay;
 
     const confirm = (
-        <MyForm id="signup3" className={ error? 'error': '' }>
+        <MyForm id="signup3" className={error ? 'error' : ''}>
             <Header as='h3'>Confirm Details</Header>
             <Header as='h4'>{props.userData.name} Make sure everything is correct before starting.</Header>
             <Divider hidden />
@@ -58,17 +64,15 @@ const ConfirmComponent = (props) => {
             </Header>
 
             <Divider hidden />
-                <Message
-                    error
-                    header='Validation Error'
-                    content='Make sure you filled out all the fields before this page!'
-                />
+            <Message
+                error
+                header='Validation Error'
+                content='Make sure you filled out all the fields before this page!'
+            />
             <Button color='green' type="submit" onClick={() => handleSubmit()} fluid disabled={error}>
                 Start PowNow
             </Button>
-            <Link href="/signup/lifts">
-                <BackButton fluid >Go Back</BackButton>
-            </Link>
+            <BackButton fluid onClick={() => handleBack()}>Go Back</BackButton>
         </MyForm>
     );
 
@@ -77,7 +81,7 @@ const ConfirmComponent = (props) => {
     )
 
     const success = (
-        <Container textAlign = 'center' >
+        <Container textAlign='center' >
             <Header as='h3' textAlign="center">Congratulations!</Header>
             <p >Keep an eye out for the confirmation text message.</p>
             <p> Once you confirm the text, you're strapped in!</p>
@@ -91,13 +95,16 @@ const ConfirmComponent = (props) => {
     } else if (props.service.type === FETCH_PRODUCTS_SUCCESS) {
         console.log(success)
         userDisplay = success
-    } else  if (props.service.type === FETCH_PRODUCTS_PENDING) {
+    } else if (props.service.type === FETCH_PRODUCTS_PENDING) {
         userDisplay = loading
     }
-
     return (
         <HomepageLayout>
-            {userDisplay}
+            <motion.div initial="exit" animate="enter" exit="exit" >
+                <motion.div variants={DEFAULT_VARIANTS}>
+                    {userDisplay}
+                </motion.div>
+            </motion.div>
         </HomepageLayout>
     )
 }

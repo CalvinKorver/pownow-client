@@ -1,6 +1,6 @@
+import { DEFAULT_VARIANTS, getWidthFactory, handleMobile } from "../lib";
 import { Grid, Header, Message, Responsive, Row, Segment } from "semantic-ui-react"
 
-import { DEFAULT_VARIANTS } from "../lib";
 import ResponsiveContainer from "../components/ResponsiveContainer";
 import { motion } from "framer-motion";
 
@@ -15,10 +15,15 @@ const What = (props) => {
         <motion.div initial="exit" animate="enter" exit="exit">
             <motion.div variants={DEFAULT_VARIANTS}>
                 <ResponsiveContainer
-                    content={{ copy: copy, img_path: img_path }} />
+                    content={{ copy: copy, img_path: img_path }}
+                    getWidth={getWidthFactory(props.isMobileFromSSR)} />
             </motion.div>
         </motion.div>
     )
+}
+
+export async function getServerSideProps(ctx) {
+    return handleMobile(ctx.req)
 }
 
 export default What
